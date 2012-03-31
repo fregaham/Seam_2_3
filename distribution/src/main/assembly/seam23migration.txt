@@ -1,0 +1,37 @@
+Seam 2.3 Migration Guide
+========================
+Before you get started with Seam 2.3, there are a few things you should be aware
+of. This process should not be too painful - if you get stuck, just refer back
+to the updated Seam examples.
+
+This migration guide assumes you are using Seam 2.0, if you are migrating from
+Seam 1.2, see the seam2migration guide as well.
+
+
+Testing
+-------
+
+SeamTest and JBoss Embedded is legacy components and have many limitations and we doesn't support it now.
+We now bring Arquillian as a replacement of JBoss Embedded and integration testing 
+is provided by org.jboss.seam.mock.JUnitSeamTest. More in reference documentation guide.
+
+Schemas
+----------------
+XML schemas for validation Files that use the Seam 2.2 XSDs should be updated to refer to 
+the 2.3 XSDs. Current Schemas URL is www.jboss.org/schema/seam/<schema>-2.3.xsd.
+
+Bean Validation
+------------------
+You need to migrate from org.hibernate.validator.* validator annotations to java.validation.constraint.* equivalent
+for instance:
+org.hibernate.validator.Length to java.validation.constraint.Size,
+org.hibernate.validator.NotNull to java.validation.constraint.NotNull,
+org.hibernate.validator.Pattern to java.validation.constraint.Pattern.
+
+
+Dependency changes (Maven)
+--------------------------
+
+The "provided" platform is now JBoss AS 7.1.x, therefore all Java EE dependencies included
+in AS 7 are now marked as provided.
+
