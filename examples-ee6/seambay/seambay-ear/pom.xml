@@ -49,6 +49,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-ear-plugin</artifactId>
+                <version>2.7</version>
                 <configuration>
                     <version>6</version>
                     <defaultLibBundleDir>lib</defaultLibBundleDir>
@@ -60,17 +61,18 @@
                     <!-- Needed for Aargh injecting entityManager via JNDI during startup -->
                     <initializeInOrder>true</initializeInOrder>
                     <modules>
+                        <ejbModule>
+                            <groupId>org.jboss.seam.examples-ee6.seambay</groupId>
+                            <artifactId>seambay-ejb</artifactId>
+                            <bundleFileName>seambay-ejb.jar</bundleFileName>
+                        </ejbModule>
+
                         <webModule>
                             <groupId>org.jboss.seam.examples-ee6.seambay</groupId>
                             <artifactId>seambay-web</artifactId>
                             <contextRoot>/seam-seambay</contextRoot>
                             <bundleFileName>seambay-web.war</bundleFileName>
                         </webModule>
-                        <ejbModule>
-                            <groupId>org.jboss.seam.examples-ee6.seambay</groupId>
-                            <artifactId>seambay-ejb</artifactId>
-                            <bundleFileName>seambay-ejb.jar</bundleFileName>
-                        </ejbModule>
                     </modules>
                 </configuration>
             </plugin>
