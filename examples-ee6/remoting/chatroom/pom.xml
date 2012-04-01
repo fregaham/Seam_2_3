@@ -17,7 +17,7 @@
         <module>chatroom-ejb</module>
         <module>chatroom-web</module>
         <module>chatroom-ear</module>
-<!--        <module>chatroom-tests</module>-->
+        <module>chatroom-tests</module>
     </modules>
 
     <properties>
