@@ -8,10 +8,10 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     
-    <groupId>org.jboss.seam.examples-ee6.remoting</groupId>
+    <groupId>org.jboss.seam.examples-ee6.remoting.helloworld</groupId>
     <artifactId>helloworld-ejb</artifactId>
     <packaging>ejb</packaging>
-    <name>Helloworld EJB Module</name>
+    <name>Helloworld EJB Module (EE6)</name>
         
     <dependencies>
         <dependency>
@@ -29,22 +29,12 @@
             <artifactId>ejb-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>javax.faces</groupId>
+            <groupId>com.sun.faces</groupId>
             <artifactId>jsf-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.jboss.seam</groupId>
             <artifactId>jboss-seam-remoting</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>dom4j</groupId>
-                    <artifactId>dom4j</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>javassist</groupId>
-                    <artifactId>javassist</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
     </dependencies>
 
