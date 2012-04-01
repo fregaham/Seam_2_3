@@ -8,24 +8,19 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     
-    <groupId>org.jboss.seam.examples-ee6.remoting</groupId>
+    <groupId>org.jboss.seam.examples-ee6.remoting.progressbar</groupId>
     <artifactId>progressbar-ear</artifactId>
     <packaging>ear</packaging>
-    <name>Progressbar EAR Module</name>
-    
-    <properties>
-        <jboss.home>${env.JBOSS_HOME}</jboss.home>
-        <jboss.domain>default</jboss.domain>
-    </properties>
+    <name>Progressbar EAR Module (EE6)</name>
     
     <dependencies>
         <dependency>
-            <groupId>org.jboss.seam.examples-ee6.remoting</groupId>
+            <groupId>org.jboss.seam.examples-ee6.remoting.progressbar</groupId>
             <artifactId>progressbar-web</artifactId>
             <type>war</type>
         </dependency>
         <dependency>
-            <groupId>org.jboss.seam.examples-ee6.remoting</groupId>
+            <groupId>org.jboss.seam.examples-ee6.remoting.progressbar</groupId>
             <artifactId>progressbar-ejb</artifactId>
             <type>ejb</type>
         </dependency>
@@ -53,43 +48,27 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-ear-plugin</artifactId>
-                <version>2.3.2</version>
                 <configuration>
-                    <version>5</version>
+                    <version>6</version>
                     <defaultLibBundleDir>lib</defaultLibBundleDir>
                     <!-- Exclude eclipse generated application.xml and manually modified jboss-app.xml during mvn build  -->
                     <earSourceExcludes>**/application.xml, **/jboss-app.xml</earSourceExcludes>
                     <!-- use maven generated application.xml instead -->
                     <generateApplicationXml>true</generateApplicationXml>
                     <filtering>true</filtering>
-                    <jboss>
-                        <version>4.2</version>
-                        <loader-repository>seam.jboss.org:loader=seam-progressbar</loader-repository>
-                    </jboss>
                     <modules>
                         <webModule>
-                            <groupId>org.jboss.seam.examples-ee6.remoting</groupId>
+                            <groupId>org.jboss.seam.examples-ee6.remoting.progressbar</groupId>
                             <artifactId>progressbar-web</artifactId>
                             <contextRoot>/seam-progressbar</contextRoot>
                             <bundleFileName>progressbar-web.war</bundleFileName>
                         </webModule>
                         <ejbModule>
-                            <groupId>org.jboss.seam.examples-ee6.remoting</groupId>
+                            <groupId>org.jboss.seam.examples-ee6.remoting.progressbar</groupId>
                             <artifactId>progressbar-ejb</artifactId>
                             <bundleFileName>progressbar-ejb.jar</bundleFileName>
                         </ejbModule>
                     </modules>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jboss-maven-plugin</artifactId>
-                <configuration>
-                    <jbossHome>${jboss.home}</jbossHome>
-                    <serverName>${jboss.domain}</serverName>
-                    <fileNames>
-                        <param>${project.build.directory}/${project.build.finalName}.${project.packaging}</param>
-                    </fileNames>
                 </configuration>
             </plugin>
         </plugins>
@@ -116,21 +95,21 @@
                                 <configuration>
                                     <artifactItems>
                                         <artifactItem>
-                                            <groupId>org.jboss.seam.examples-ee6.remoting</groupId>
+                                            <groupId>org.jboss.seam.examples-ee6.remoting.progressbar</groupId>
                                             <artifactId>progressbar-ear</artifactId>
                                             <type>ear</type>
                                             <overWrite>true</overWrite>
                                             <outputDirectory>${project.build.directory}/${project.build.finalName}-exploded/${project.build.finalName}.ear</outputDirectory>
                                         </artifactItem>
                                         <artifactItem>
-                                            <groupId>org.jboss.seam.examples-ee6.remoting</groupId>
+                                            <groupId>org.jboss.seam.examples-ee6.remoting.progressbar</groupId>
                                             <artifactId>progressbar-web</artifactId>
                                             <type>war</type>
                                             <overWrite>true</overWrite>
                                             <outputDirectory>${project.build.directory}/${project.build.finalName}-exploded/${project.build.finalName}.ear/${example.name}-web.war</outputDirectory>
                                         </artifactItem>
                                         <artifactItem>
-                                            <groupId>org.jboss.seam.examples-ee6.remoting</groupId>
+                                            <groupId>org.jboss.seam.examples-ee6.remoting.progressbar</groupId>
                                             <artifactId>progressbar-ejb</artifactId>
                                             <type>jar</type>
                                             <overWrite>true</overWrite>
@@ -140,17 +119,6 @@
                                 </configuration>
                             </execution>
                         </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>jboss-maven-plugin</artifactId>
-                        <configuration>
-                            <jbossHome>${jboss.home}</jbossHome>
-                            <serverName>${jboss.domain}</serverName>
-                            <fileNames>
-                                <directory>${project.build.directory}/${project.build.finalName}-exploded/${project.build.finalName}.ear</directory>
-                            </fileNames>
-                        </configuration>
                     </plugin>
                 </plugins>
             </build>
